@@ -1,16 +1,24 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public class Bullet : DamageDealer
+public class Bullet : MonoBehaviour, DamageDealer
 {
     [Header("Bullet")]
     public BulletData Data;
     private Rigidbody2D _rigi;
 
+    #region DamageDealer interface
+    public float GetDamageAMount()
+    {
+        return Data.DamageAmount;
+    }
+    #endregion
+
     private void Awake()
     {
         _rigi = GetComponent<Rigidbody2D>();
-        Data.OnAwak.Invoke();
+        if(Data.OnAwak != null && Data.OnAwak.GetPersistentEventCount() > 0)
+            Data.OnAwak.Invoke();
     }
 
     private void Start()
@@ -20,6 +28,7 @@ public class Bullet : DamageDealer
 
     private void OnDestroy()
     {
-        Data.OnDest.Invoke();
+        if (Data.OnDest != null && Data.OnDest .GetPersistentEventCount() > 0)
+            Data.OnDest.Invoke();
     }
 }

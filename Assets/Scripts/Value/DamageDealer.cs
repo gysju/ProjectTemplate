@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class DamageDealer : MonoBehaviour
+public interface DamageDealer
 {
-    public FloatReference DamageAmount;
+    float GetDamageAMount();
 }

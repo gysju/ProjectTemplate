@@ -23,7 +23,7 @@ public class UnitHealth : MonoBehaviour
         DamageDealer damage = other.gameObject.GetComponent<DamageDealer>();
         if (damage != null)
         {
-            HP.ApplyChange(-damage.DamageAmount);
+            HP.ApplyChange(-damage.GetDamageAMount());
             DamageEvent.Invoke();
         }
 

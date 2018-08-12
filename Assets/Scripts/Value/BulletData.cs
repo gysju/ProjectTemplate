@@ -11,8 +11,8 @@ public class BulletData : ScriptableObject
     public string Description = "";
 #endif
 
-    public FloatVariable Velocity;
-    public FloatVariable DamageAmount;
+    public FloatReference Velocity;
+    public FloatReference DamageAmount;
 
     public UnityEvent OnAwak;
     public UnityEvent OnDest;
