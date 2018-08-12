@@ -3,7 +3,6 @@ using UnityEngine.Events;
 
 public class Bullet : MonoBehaviour, DamageDealer
 {
-    [Header("Bullet")]
     public BulletData Data;
     private Rigidbody2D _rigi;
 
@@ -16,6 +15,8 @@ public class Bullet : MonoBehaviour, DamageDealer
 
     private void Awake()
     {
+        BulletManager.Instance.CurrentAliveBullets.Add(this);
+
         _rigi = GetComponent<Rigidbody2D>();
         if(Data.OnAwak != null && Data.OnAwak.GetPersistentEventCount() > 0)
             Data.OnAwak.Invoke();
@@ -28,6 +29,8 @@ public class Bullet : MonoBehaviour, DamageDealer
 
     private void OnDestroy()
     {
+        BulletManager.Instance.CurrentAliveBullets.Remove(this);
+
         if (Data.OnDest != null && Data.OnDest .GetPersistentEventCount() > 0)
             Data.OnDest.Invoke();
     }
