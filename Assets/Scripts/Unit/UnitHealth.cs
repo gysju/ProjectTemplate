@@ -20,7 +20,7 @@ public class UnitHealth : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        DamageDealer damage = other.gameObject.GetComponent<DamageDealer>();
+        IDamageDealer damage = other.gameObject.GetComponent<IDamageDealer>();
         if (damage != null)
         {
             HP.ApplyChange(-damage.GetDamageAMount());

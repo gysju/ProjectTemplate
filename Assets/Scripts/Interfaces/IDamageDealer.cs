@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public interface DamageDealer
+public interface IDamageDealer
 {
     float GetDamageAMount();
 }
